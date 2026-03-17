@@ -1,0 +1,12 @@
+:80 {
+	handle /api/v1/* {
+		reverse_proxy prowler-api:8080 {
+			header_up Host prowler-api:8080
+			header_up Origin http://localhost
+		}
+	}
+
+	handle {
+		reverse_proxy ui:3000
+	}
+}
